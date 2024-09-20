@@ -1,0 +1,11 @@
+.Layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  main {
+    background-color: #121212;
+    padding: 20px 0px;
+    min-height: 80vh;
+  }
+}

@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+ul,
+ol {
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+html {
+  color-scheme: dark;
+  background-color: black;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  color: #222222 !important;
+  padding: 0px;
+}
+.container {
+  width: 100%;
+  max-width: 1906px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
