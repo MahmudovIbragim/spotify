@@ -7,18 +7,31 @@ import {
 } from '../../../assets/icons';
 import scss from './Header.module.scss';
 import Input from '../../../ui/input/Input';
+import { useState } from 'react';
 
 const Header = () => {
   const navigate = useNavigate();
+  const [isDrop, setIsDrop] = useState(false);
+
   return (
     <header className={scss.Header}>
       <div className={scss.Content}>
-        <div className={scss.left_content}>
+        <div
+          className={scss.left_content}
+          onClick={() => {
+            navigate('/');
+          }}
+        >
           <IconBlackLogo />
         </div>
         <div></div>
         <div className={scss.center_content}>
-          <button className={scss.icon}>
+          <button
+            className={scss.icon}
+            onClick={() => {
+              navigate('/');
+            }}
+          >
             <IconHome />
           </button>
           <Input placeholder='Что хочешь включить ?' />
@@ -41,18 +54,38 @@ const Header = () => {
               <div
                 className={scss.border_profile}
                 onClick={() => {
+                  setIsDrop(!isDrop);
+                }}
+              ></div>
+            </figure>
+          </button>
+          <div className={isDrop ? scss.drop_out : scss.none}>
+            <ul>
+              <li>
+                <p>Счет</p>
+              </li>
+              <li>
+                <p>Профиль</p>
+              </li>
+              <li>
+                <p>Обновите до Премиум</p>
+              </li>
+              <li>
+                <p>Настройки</p>
+              </li>
+              <hr />
+              <li
+                onClick={() => {
                   navigate('/login');
                   localStorage.removeItem('token');
                   localStorage.clear();
+                  setIsDrop(false);
                 }}
               >
-                <img
-                  src='https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg'
-                  alt=''
-                />
-              </div>
-            </figure>
-          </button>
+                <button>Выйти</button>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </header>
