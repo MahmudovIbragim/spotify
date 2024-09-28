@@ -1,0 +1,19 @@
+.Genre {
+  .header_category {
+    padding-top: 5px;
+    padding: 70px 0px 50px 20px;
+    h2 {
+      font-size: 4rem;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none; 
+      -ms-user-select: none;
+    }
+  }
+  .bg_style {
+    padding-top: 20px;
+    .Content {
+      height: 50vh;
+    }
+  }
+}

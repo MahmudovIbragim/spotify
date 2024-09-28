@@ -12,3 +12,4 @@ export { default as IconPlaying } from './playing';
 export { default as IconInstagram } from './instagram';
 export { default as IconTwitter } from './twitter';
 export { default as IconFacebook } from './facebook';
+export { default as IconBgReview } from './bg-review';

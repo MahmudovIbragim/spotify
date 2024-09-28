@@ -7,11 +7,28 @@ import {
 } from '../../../assets/icons';
 import scss from './Header.module.scss';
 import Input from '../../../ui/input/Input';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Header = () => {
   const navigate = useNavigate();
   const [isDrop, setIsDrop] = useState(false);
+  const [token, setToken] = useState(() => localStorage.getItem('token') || '');
+
+  useEffect(() => {
+    if (!token && window.location.hash) {
+      const newToken = window.location.hash
+        .substring(1)
+        .split('&')
+        .find(param => param.startsWith('access_token'))
+        ?.split('=')[1];
+
+      if (newToken) {
+        setToken(newToken);
+        localStorage.setItem('token', newToken);
+        localStorage.setItem('isToken', 'true');
+      }
+    }
+  }, [token]);
 
   return (
     <header className={scss.Header}>
@@ -78,7 +95,7 @@ const Header = () => {
                 onClick={() => {
                   navigate('/login');
                   localStorage.removeItem('token');
-                  localStorage.clear();
+                  localStorage.setItem('isToken', 'false');
                   setIsDrop(false);
                 }}
               >

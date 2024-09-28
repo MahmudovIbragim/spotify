@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useGetReccomendationsQuery } from '../../../redux/api/getRecomen';
 import scss from './Section.module.scss';
 import { IconPlay } from '../../../assets/icons';
-import Player from '../../../ui/player/player';
+import Player from '../../../ui/player/Player';
 
 const Section = () => {
   const [panel, setPanel] = useState<boolean>(false);
@@ -18,6 +18,7 @@ const Section = () => {
     seed_genres: 'classical,country',
     seed_tracks: '0c6xIDDpzE81m2q797ordA',
   });
+  
 
   return (
     <section className={scss.Section}>
@@ -65,7 +66,6 @@ const Section = () => {
                       </div>
                       <div className={scss.music}>
                         <p className={scss.name}>
-                          {/* {item.name.length <= 26 ? item.name : null} */}
                           {item.name}
                         </p>
                         <p className={scss.executor}>{item.album.name}</p>

@@ -14,7 +14,7 @@ const Login = () => {
           <a
             href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL}&response_type=${RESPONSE_TYPE}`}
           >
-            auth
+            Get Token
           </a>
         </div>
       </div>
