@@ -32,7 +32,7 @@ const Search = () => {
   const { data } = useGetBrowseCategoryQuery();
   const value = useParams();
   const [dataTypes, setDataTypes] = useState<DataType[]>(initialDataTypes);
-  const { data: searchData } = useGetSearchQuery({
+  const { data: searchData, isSuccess } = useGetSearchQuery({
     q: value.params != undefined ? value.params : '',
     type: dataTypes.find(i => (i.isActive ? i.type : i.id === 1 ? i.type : ''))
       ?.type,
@@ -68,7 +68,6 @@ const Search = () => {
       ),
     );
   };
-  console.log(searchData);
 
   const formatDuration = (ms: number) => {
     const totalSeconds = Math.floor(ms / 1000);
@@ -78,6 +77,7 @@ const Search = () => {
 
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
+
 
   return (
     <div className={scss.Search}>
@@ -102,123 +102,244 @@ const Search = () => {
                   ))}
                 </ul>
               </div>
-              <div className={scss.res_content}>
-                <div className={scss.res_artist}>
-                  <p>Лучший результат</p>
-                  <div className={scss.res_card}>
-                    <div className={scss.res_info}>
-                      <div className={scss.img}>
-                        <img
-                          src={
-                            searchData?.artists?.items?.[0]?.images?.[0]?.url ||
-                            'https://developer.spotify.com/images/guidelines/design/logo-misuse1.svg'
-                          }
-                          alt='image'
-                        />
-                      </div>
-                      <div className={scss.res_title}>
-                        <div className={scss.txt}>
-                          <p>{searchData?.artists.items[0].name}</p>
-                          <p>Художник</p>
+              {isSuccess ? (
+                <>
+                  <div className={scss.res_content}>
+                    <div className={scss.res_artist}>
+                      <p>Лучший результат</p>
+                      <div className={scss.res_card}>
+                        <div className={scss.res_info}>
+                          <div className={scss.img}>
+                            <img
+                              src={
+                                searchData?.artists?.items?.[0]?.images?.[0]
+                                  ?.url ||
+                                'https://developer.spotify.com/images/guidelines/design/logo-misuse1.svg'
+                              }
+                              alt='image'
+                            />
+                          </div>
+                          <div className={scss.res_title}>
+                            <div className={scss.txt}>
+                              <p>{searchData?.artists.items[0].name}</p>
+                              <p>Художник</p>
+                            </div>
+                            <div className={scss.btn_hover}></div>
+                          </div>
                         </div>
-                        <div className={scss.btn_hover}></div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div className={scss.trak_content}>
-                  <p>Песни</p>
-                  <div className={scss.trak_container}>
-                    {searchData?.tracks.items.slice(0, 4).map(trakc => (
+                    {searchData.tracks.items.length != 0 ? (
                       <>
-                        <div className={scss.trak}>
-                          <div className={scss.left_info}>
-                            <div className={scss.img}>
-                              <img src={trakc.album.images[2].url} alt='' />
-                              {/* icon */}
-                            </div>
-                            <div className={scss.trak_title}>
-                              <p>{trakc.name}</p>
-                              <p>
-                                {trakc.artists.map(i => (
-                                  <>
-                                    <span
-                                      className={
-                                        trakc.artists.length >= 2
-                                          ? scss.before
-                                          : ''
-                                      }
-                                    >
-                                      {i.name}
-                                    </span>
-                                  </>
-                                ))}
-                              </p>
-                            </div>
-                          </div>
-                          <div className={scss.trak_duration}>
-                            <p>{formatDuration(trakc.duration_ms)}</p>
+                        <div className={scss.trak_content}>
+                          <p>Песни</p>
+                          <div className={scss.trak_container}>
+                            {searchData?.tracks.items.slice(0, 4).map(trakc => (
+                              <>
+                                <div className={scss.trak}>
+                                  <div className={scss.left_info}>
+                                    <div className={scss.img}>
+                                      <img
+                                        src={trakc.album.images[2].url}
+                                        alt=''
+                                      />
+                                      {/* icon */}
+                                    </div>
+                                    <div className={scss.trak_title}>
+                                      <p>{trakc.name}</p>
+                                      <p>
+                                        {trakc.artists.map(i => (
+                                          <>
+                                            <span
+                                              className={
+                                                trakc.artists.length >= 2
+                                                  ? scss.before
+                                                  : ''
+                                              }
+                                            >
+                                              {i.name || ''}
+                                            </span>
+                                          </>
+                                        ))}
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div className={scss.trak_duration}>
+                                    <p>{formatDuration(trakc.duration_ms)}</p>
+                                  </div>
+                                </div>
+                              </>
+                            ))}
                           </div>
                         </div>
                       </>
-                    ))}
+                    ) : null}
                   </div>
-                </div>
-              </div>
-              <div className={scss.seaction_with}>
-                <h2>С {value.params}</h2>
-                <div className={scss.with_container}>
-                  <div className={scss.with_card}>
-                    <div className={scss.with_card_bg}></div>
-                    <p></p>
-                    <p></p>
-                  </div>
-                </div>
-              </div>
-              <div className={scss.section_artista}>
-                <h2>Художники</h2>
-                <div className={scss.artista_container}>
-                  {searchData?.artists?.items?.slice(0, 8).map(artista => (
-                    <div className={scss.artista_card} key={artista.id}>
-                      <div className={scss.card_img}>
-                        <img
-                          src={
-                            artista?.images?.[0]?.url ||
-                            'https://developer.spotify.com/images/guidelines/design/logo-misuse1.svg'
-                          }
-                          alt='image'
-                        />
+                  <div className={scss.seaction_with}>
+                    <h2>С {value.params}</h2>
+                    <div className={scss.with_container}>
+                      <div className={scss.with_card}>
+                        <div className={scss.with_card_bg}></div>
+                        <p></p>
+                        <p></p>
                       </div>
-                      <p>{artista.name}</p>
-                      <p>Художники</p>
                     </div>
-                  ))}
-                </div>
-              </div>
-              <div className={scss.section_alboms}>
-                <h2>Альбомы</h2>
-                <div className={scss.alboms_container}>
-                  {searchData?.albums.items.slice(0, 8).map(albom => (
+                  </div>
+
+                  {searchData.artists.items.length != 0 ? (
                     <>
-                      <div className={scss.albom_card} key={albom.id}>
-                        <div className={scss.albom_img}>
-                          <img
-                            src={
-                              albom.images[0].url ||
-                              'https://developer.spotify.com/images/guidelines/design/logo-misuse1.svg'
-                            }
-                            alt='image'
-                          />
-                        </div>
-                        <div className={scss.albom_title}>
-                          <p>{albom.name}</p>
-                          <p>{albom.artists[0].name}</p>
+                      <div className={scss.section_artista}>
+                        <h2>Художники</h2>
+                        <div className={scss.artista_container}>
+                          {searchData?.artists?.items
+                            ?.slice(0, 8)
+                            .map(artista => (
+                              <div
+                                className={scss.artista_card}
+                                key={artista.id}
+                              >
+                                <div className={scss.card_img}>
+                                  <img
+                                    src={
+                                      artista?.images?.[0]?.url ||
+                                      'https://developer.spotify.com/images/guidelines/design/logo-misuse1.svg'
+                                    }
+                                    alt='image'
+                                  />
+                                </div>
+                                <p>{artista.name || ''}</p>
+                                <p>Художники</p>
+                              </div>
+                            ))}
                         </div>
                       </div>
                     </>
-                  ))}
-                </div>
-              </div>
+                  ) : null}
+
+                  {searchData.albums.items.length != 0 ? (
+                    <>
+                      <div className={scss.section_sq}>
+                        <h2>Альбомы</h2>
+                        <div className={scss._container}>
+                          {searchData?.albums.items.slice(0, 8).map(albom => (
+                            <>
+                              <div className={scss._card} key={albom.id}>
+                                <div className={scss._img}>
+                                  <img
+                                    src={
+                                      albom.images[0].url ||
+                                      'https://developer.spotify.com/images/guidelines/design/logo-misuse1.svg'
+                                    }
+                                    alt='image'
+                                  />
+                                </div>
+                                <div className={scss._title}>
+                                  <p>{albom.name}</p>
+                                  <p>{albom.artists[0].name}</p>
+                                </div>
+                              </div>
+                            </>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : null}
+
+                  {searchData.playlists.items.length != 0 ? (
+                    <>
+                      <div className={scss.section_sq}>
+                        <h2>Плейлисты</h2>
+                        <div className={scss._container}>
+                          {searchData?.playlists.items
+                            .slice(0, 8)
+                            .map(playlist => (
+                              <>
+                                <div className={scss._card}>
+                                  <div className={scss._img}>
+                                    <img
+                                      src={
+                                        playlist.images && playlist.images[1]
+                                          ? playlist.images[1].url
+                                          : 'https://developer.spotify.com/images/guidelines/design/logo-misuse1.svg'
+                                      }
+                                      alt='image'
+                                    />
+                                  </div>
+                                  <div className={scss._title}>
+                                    <p>{playlist.name}</p>
+                                  </div>
+                                </div>
+                              </>
+                            ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : null}
+
+                  {searchData.shows.items.length != 0 ? (
+                    <>
+                      <div className={scss.section_sq}>
+                        <h2>Подкасты</h2>
+                        <div className={scss._container}>
+                          {searchData.shows.items.slice(0, 8).map(shows => (
+                            <>
+                              <div className={scss._card}>
+                                <div className={scss._img}>
+                                  <img
+                                    src={
+                                      shows.images && shows.images[1]
+                                        ? shows.images[1].url
+                                        : 'https://developer.spotify.com/images/guidelines/design/logo-misuse1.svg'
+                                    }
+                                    alt='image'
+                                  />
+                                </div>
+                                <div className={scss._title}>
+                                  <p>{shows.name}</p>
+                                  <p>{shows.publisher}</p>
+                                </div>
+                              </div>
+                            </>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : null}
+
+                  {searchData.episodes.items.length != 0 ? (
+                    <>
+                      <div className={scss.section_sq}>
+                        <h2>Эпизоды</h2>
+                        <div className={scss._container}>
+                          {searchData.episodes.items.slice(0, 8).map(episod => (
+                            <>
+                              <div className={scss._card}>
+                                <div className={scss._img}>
+                                  <img
+                                    src={
+                                      episod.images && episod.images[1]
+                                        ? episod.images[1].url
+                                        : 'https://developer.spotify.com/images/guidelines/design/logo-misuse1.svg'
+                                    }
+                                    alt='image'
+                                  />
+                                </div>
+                                <div className={scss._title}>
+                                  <p>{episod.name}</p>
+                                </div>
+                              </div>
+                            </>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : null}
+                </>
+              ) : (
+                <>
+                  <h2>Response Error</h2>
+                </>
+              )}
             </div>
           ) : (
             <>

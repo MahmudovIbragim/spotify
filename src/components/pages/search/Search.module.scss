@@ -5,7 +5,23 @@
       color: white;
     }
     .search_contaienr {
+      position: relative;
+      h2 {
+        margin-bottom: 20px;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
       .types_search {
+        position: fixed;
+        top: 64px;
+        max-width: 1858px;
+        width: 100%;
+        padding: 10px 0px;
+        background-color: #121212;
+        
         ul {
           display: flex;
           justify-content: space-between;
@@ -186,13 +202,6 @@
         }
       }
       .section_artista {
-        h2 {
-          margin-bottom: 20px;
-          cursor: pointer;
-          &:hover {
-            text-decoration: underline;
-          }
-        }
         .artista_container {
           display: flex;
           justify-content: space-between;
@@ -213,7 +222,6 @@
                 height: 170px;
               }
             }
-
             p {
               font-size: 18px;
               font-weight: 500;
@@ -229,20 +237,12 @@
           }
         }
       }
-      .section_alboms {
+      .section_sq {
         margin-top: 40px;
-
-        h2 {
-          margin-bottom: 20px;
-          cursor: pointer;
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-        .alboms_container {
+        ._container {
           display: flex;
           justify-content: space-between;
-          .albom_card {
+          ._card {
             padding: 15px 15px 20px;
             border-radius: 10px;
             cursor: pointer;
@@ -250,7 +250,7 @@
               background-color: #1d1d1d;
               transition: 0.2s;
             }
-            .albom_img {
+            ._img {
               margin-bottom: 10px;
               img {
                 width: 170px;
@@ -258,7 +258,7 @@
                 border-radius: 10px;
               }
             }
-            .albom_title {
+            ._title {
               p {
                 font-size: 16px;
                 font-weight: 500;
@@ -282,7 +282,6 @@
       align-items: start;
       flex-wrap: wrap;
       margin-top: 40px;
-
       .card_gap {
         padding: 20px;
         max-width: 304px;
