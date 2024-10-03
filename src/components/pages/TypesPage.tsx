@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
-import Artists from './artists/Artists';
-import Track from './artists/Track';
-import Playlist from './artists/Playlist';
+import Artists from './type/Artists';
+import Track from './type/Track';
+import Playlist from './type/Playlist';
 
 const TypesPage = () => {
   const value = useParams();
