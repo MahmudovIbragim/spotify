@@ -10,18 +10,18 @@
       .card_content {
         padding: 10px;
         cursor: pointer;
-        &:hover{
+        &:hover {
           background-color: #3a3a3a;
           border-radius: 10px;
         }
         .card {
-          
           .card_img {
             max-width: 200px;
             width: 100%;
             img {
               width: 150px;
-              max-height: 150px;
+              height: 150px;
+              object-fit: cover;
               border-radius: 50%;
             }
           }
@@ -29,7 +29,7 @@
             max-width: 150px;
             width: 100%;
             margin-top: 10px;
-            display:flex;
+            display: flex;
             flex-direction: column;
             gap: 5px;
             p {

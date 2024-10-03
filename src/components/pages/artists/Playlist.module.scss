@@ -1,0 +1,53 @@
+.Playlist {
+  .Content {
+    margin-top: 100px;
+    .container {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px 0px;
+      .card {
+        padding: 10px 10px 20px;
+        border-radius: 10px;
+        &:hover {
+          background-color: #3a3a3a;
+        }
+        .card_content {
+          .img {
+            margin-bottom: 15px;
+
+            img {
+              border-radius: 5px;
+              width: 171px;
+              height: 171px;
+              object-fit: cover;
+            }
+          }
+          .card_title {
+            max-width: 170px;
+
+            p {
+              box-sizing: border-box;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+              overflow: hidden;
+              &:first-child {
+                font-size: 15px;
+                font-weight: 500;
+                max-height: 35px;
+              }
+              &:last-child {
+                margin-top: 5px;
+                font-size: 14px;
+                font-weight: 400;
+                color: rgb(170, 170, 170);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

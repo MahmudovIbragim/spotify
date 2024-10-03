@@ -22,7 +22,7 @@ const Header = () => {
   const value = useParams();
   const [isDrop, setIsDrop] = useState(false);
   const [token, setToken] = useState(() => localStorage.getItem('token') || '');
-  const [activedType,] = useState(false);
+  const [activedType] = useState(false);
   const initialDataTypes: DataType[] = [
     {
       id: 1,
@@ -79,8 +79,9 @@ const Header = () => {
           item.id === 1
             ? { ...item, isActive: true }
             : { ...item, isActive: false },
-        ),  
+        ),
       );
+      navigate('/search');
     }
   }, [value.params]);
 
