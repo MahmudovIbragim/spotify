@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   IconBell,
   IconBlackLogo,
@@ -8,11 +8,45 @@ import {
 import scss from './Header.module.scss';
 import Input from '../../../ui/input/Input';
 import { useEffect, useState } from 'react';
+import { useSearch } from '../../../providers/SearchContext';
+interface DataType {
+  id: number;
+  title: string;
+  type: string;
+  isActive: boolean;
+}
 
 const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const value = useParams();
   const [isDrop, setIsDrop] = useState(false);
   const [token, setToken] = useState(() => localStorage.getItem('token') || '');
+  const [activedType,] = useState(false);
+  const initialDataTypes: DataType[] = [
+    {
+      id: 1,
+      title: 'Все',
+      type: `album,artist,playlist,track,show,episode,audiobook`,
+      isActive: true,
+    },
+    { id: 2, title: 'Художники', type: 'artist', isActive: activedType },
+    { id: 3, title: 'Песни', type: 'track', isActive: activedType },
+    { id: 4, title: 'Плейлисты', type: 'playlist', isActive: activedType },
+    { id: 5, title: 'Аудио книги', type: 'audiobook', isActive: activedType },
+    {
+      id: 6,
+      title: 'Подкасты и программы',
+      type: 'show',
+      isActive: activedType,
+    },
+    { id: 7, title: 'Альбомы', type: 'album', isActive: activedType },
+    { id: 8, title: 'Эпизоды', type: 'episode', isActive: activedType },
+  ];
+
+  const [dataTypes, setDataTypes] = useState<DataType[]>(initialDataTypes);
+
+  const { search } = useSearch();
 
   useEffect(() => {
     if (!token && window.location.hash) {
@@ -21,7 +55,6 @@ const Header = () => {
         .split('&')
         .find(param => param.startsWith('access_token'))
         ?.split('=')[1];
-
       if (newToken) {
         setToken(newToken);
         localStorage.setItem('token', newToken);
@@ -29,6 +62,38 @@ const Header = () => {
       }
     }
   }, [token]);
+  const handleClick = (id: number) => {
+    setDataTypes(prevDataTypes =>
+      prevDataTypes.map(item =>
+        item.id === id
+          ? { ...item, isActive: true }
+          : { ...item, isActive: false },
+      ),
+    );
+  };
+
+  useEffect(() => {
+    if (value.params === undefined) {
+      setDataTypes(prevDataTypes =>
+        prevDataTypes.map(item =>
+          item.id === 1
+            ? { ...item, isActive: true }
+            : { ...item, isActive: false },
+        ),  
+      );
+    }
+  }, [value.params]);
+
+  const hadnleSearch = (id: number, type: string) => {
+    if (id === 1) {
+      search(value.params!, type!, 10);
+      navigate(`/search/${value.params}`);
+      handleClick(id);
+    } else {
+      handleClick(id);
+      navigate(`/search/${value.params}/${type}`);
+    }
+  };
 
   return (
     <header className={scss.Header}>
@@ -106,6 +171,27 @@ const Header = () => {
             </div>
           </div>
         </div>
+        {location.pathname.startsWith('/search/') ? (
+          <>
+            <div className={scss.types_search}>
+              <ul>
+                {dataTypes.map(item => (
+                  <>
+                    <li
+                      className={item.isActive ? scss.active : ''}
+                      onClick={() => {
+                        hadnleSearch(item.id, item.type);
+                      }}
+                      key={item.id}
+                    >
+                      <button>{item.title}</button>
+                    </li>
+                  </>
+                ))}
+              </ul>
+            </div>
+          </>
+        ) : null}
       </div>
     </header>
   );

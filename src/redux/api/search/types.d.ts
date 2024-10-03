@@ -12,6 +12,7 @@ namespace SEARCH {
   type GetSearchReq = {
     q: string;
     type: string | undefined;
+    offset: number
   };
 
   type Tracks = {

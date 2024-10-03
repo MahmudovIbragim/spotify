@@ -1,10 +1,11 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { IconBgReview, IconReview, IconSearch } from '../../assets/icons';
 import scss from './Input.module.scss';
 import { useEffect, useRef, useState } from 'react';
 
 const Input = ({ placeholder }: { placeholder: string }) => {
   const location = useLocation();
+  const params = useParams();
   const navigate = useNavigate();
   const [isIcon, setIsIcon] = useState(false);
   const [value, setValue] = useState('');
@@ -18,19 +19,23 @@ const Input = ({ placeholder }: { placeholder: string }) => {
       setIsIcon(true);
     } else {
       setIsIcon(false);
+      setValue('');
     }
   }, [location.pathname]);
 
   useEffect(() => {
     if (value.length > 0) {
-      navigate(`/search/${value}`);
+      if (params.type != undefined) {
+        navigate(`/search/${value}/${params.type}`);
+      } else {
+        navigate(`/search/${value}`);
+      }
     } else {
       if (location.pathname.startsWith('/search/')) {
         navigate('/search');
       }
     }
   }, [value]);
-
   return (
     <div
       className={scss.input_container}

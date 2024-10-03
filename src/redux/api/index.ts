@@ -5,7 +5,6 @@ const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_PUBLIC_SPOTIFY,
   prepareHeaders: headers => {
     const token = localStorage.getItem('token');
-    console.log(token);
 
     if (token) {
       headers.set('Authorization', `Bearer ${token}`);

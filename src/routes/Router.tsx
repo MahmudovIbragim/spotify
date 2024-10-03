@@ -4,6 +4,7 @@ import HomePage from '../components/pages/HomePage';
 import LoginPage from '../components/pages/LoginPage';
 import SearchPage from '../components/pages/SearchPage';
 import GenrePage from '../components/pages/GenrePage';
+import TypesPage from '../components/pages/TypesPage';
 
 const router = createBrowserRouter([
   {
@@ -23,8 +24,12 @@ const router = createBrowserRouter([
         element: <SearchPage />,
       },
       {
-        path: '/search/:params',
+        path: '/search/:params?',
         element: <SearchPage />,
+      },
+      {
+        path: '/search/:params?/:type?',
+        element: <TypesPage />,
       },
       {
         path: '/genre/:id/:color',
