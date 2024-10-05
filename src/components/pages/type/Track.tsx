@@ -13,7 +13,7 @@ const Track = () => {
   const { isFetching, isSuccess, search, data: dataTRK } = useSearch();
 
   useEffect(() => {
-    if (hasMore) {  
+    if (hasMore) {
       search(value.params ?? '', value.type!, offset);
     }
   }, [value.params, value.type, offset, hasMore]);
@@ -21,7 +21,7 @@ const Track = () => {
   useEffect(() => {
     if (isSuccess && data) {
       if (dataTRK?.tracks && dataTRK?.tracks.items) {
-        setTracks(prev => [...prev, ...dataTRK.tracks.items]);
+        setTracks(prev => [...dataTRK.tracks.items, ...prev]);
         if (dataTRK?.tracks.items.length < 50) {
           setHasMore(false);
         }

@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect, useRef, useState } from 'react';
 import scss from './Artists.module.scss';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSearch } from '../../../providers/SearchContext';
 
 const Artists = () => {
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const value = useParams();
+  const navigate = useNavigate();
   const [data, setArtists] = useState<SEARCH.Item2[]>([]);
   const { search, isSuccess, data: dataArt, isFetching } = useSearch();
 
@@ -19,7 +20,7 @@ const Artists = () => {
 
   useEffect(() => {
     if (isSuccess && dataArt?.artists?.items) {
-      setArtists(prev => [...prev, ...dataArt.artists.items]);
+      setArtists(prev => [...dataArt.artists.items, ...prev]);
       if (dataArt.artists.items.length < 50) {
         setHasMore(false);
       }
@@ -57,7 +58,10 @@ const Artists = () => {
                         key={artist.id}
                         className={scss.card_content}
                       >
-                        <div className={scss.card}>
+                        <div
+                          className={scss.card}
+                          onClick={() => navigate(`/artist/${artist.id}`)}
+                        >
                           <div className={scss.card_img}>
                             <img
                               src={

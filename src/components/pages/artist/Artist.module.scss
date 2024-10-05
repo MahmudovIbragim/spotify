@@ -1,0 +1,36 @@
+.Artist {
+  .artist_info {
+    display: flex;
+
+    padding: 50px 0px 10px 50px;
+    .artist_profil {
+      img {
+        object-fit: cover;
+        border-radius: 50%;
+        width: 232px;
+        height: 232px;
+      }
+    }
+    .artist_title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      margin-left: 50px;
+      p {
+        font-size: 17px;
+        span {
+          margin-right: 10px;
+        }
+      }
+      h1 {
+        width: 100%;
+        font-size: 6rem;
+        font-weight: 800;
+      }
+    }
+  }
+  .Content {
+    margin-top: 50px;
+  }
+}

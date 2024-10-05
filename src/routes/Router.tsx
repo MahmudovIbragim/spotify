@@ -5,6 +5,8 @@ import LoginPage from '../components/pages/LoginPage';
 import SearchPage from '../components/pages/SearchPage';
 import GenrePage from '../components/pages/GenrePage';
 import TypesPage from '../components/pages/TypesPage';
+import ArtistPage from '../components/pages/ArtistPage';
+import ProfilPage from '../components/pages/ProfilPage';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <LoginPage />,
+      },
+      {
+        path: '/profile',
+        element: <ProfilPage />,
       },
       {
         path: '/search',
@@ -34,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: '/genre/:id/:color',
         element: <GenrePage />,
+      },
+      {
+        path: '/artist/:id',
+        element: <ArtistPage />,
       },
     ],
   },

@@ -11,7 +11,6 @@ const Search = () => {
   const value = useParams();
   const location = useLocation();
   const { search, data: searchData, isSuccess } = useSearch();
-  console.log(value.params);
 
   useEffect(() => {
     if (value.params != undefined) {

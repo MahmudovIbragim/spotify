@@ -15,3 +15,5 @@ export { default as IconFacebook } from './facebook';
 export { default as IconBgReview } from './bg-review';
 export { default as IconDuration } from './icon-duration';
 export { default as IconHvTrack } from './icon-hw-track';
+export { default as IconChekMark } from './chek-mark';
+export { default as IconDots } from './dtos';

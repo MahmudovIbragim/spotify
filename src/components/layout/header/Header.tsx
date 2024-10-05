@@ -81,7 +81,6 @@ const Header = () => {
             : { ...item, isActive: false },
         ),
       );
-      navigate('/search');
     }
   }, [value.params]);
 
@@ -148,7 +147,12 @@ const Header = () => {
                 <li>
                   <p>Счет</p>
                 </li>
-                <li>
+                <li
+                  onClick={() => {
+                    navigate('/profile');
+                    setIsDrop(false);
+                  }}
+                >
                   <p>Профиль</p>
                 </li>
                 <li>
