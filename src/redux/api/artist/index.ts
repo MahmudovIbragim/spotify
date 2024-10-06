@@ -8,7 +8,20 @@ const api = index.injectEndpoints({
         method: 'GET',
       }),
     }),
+    GetArtistTopTracks: build.query<
+      ARTIST.GetArtistTopTracksRes,
+      ARTIST.GetArtistTopTracksRec
+    >({
+      query: ({ id }) => ({
+        url: `https://api.spotify.com/v1/artists/${id}/top-tracks`,
+        method: 'GET',
+        params: {
+          market: 'KG',
+        },
+      }),
+      providesTags: ['music'],
+    }),
   }),
 });
 
-export const { useGetArtistQuery } = api;
+export const { useGetArtistQuery, useGetArtistTopTracksQuery } = api;

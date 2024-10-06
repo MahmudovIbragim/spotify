@@ -17,3 +17,4 @@ export { default as IconDuration } from './icon-duration';
 export { default as IconHvTrack } from './icon-hw-track';
 export { default as IconChekMark } from './chek-mark';
 export { default as IconDots } from './dtos';
+export { default as IconPlus } from './icon-plus';
