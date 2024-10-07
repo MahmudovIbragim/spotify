@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useGetBrowseCategoryQuery } from '../../../redux/api/browserCategory';
