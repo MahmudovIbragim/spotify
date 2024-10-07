@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useGetBrowseCategoryQuery } from '../../../redux/api/browserCategory';
@@ -162,6 +163,9 @@ const Search = () => {
                                   ?.slice(0, 8)
                                   .map(artista => (
                                     <div
+                                      onClick={() => {
+                                        navigate(`/artist/${artista.id}`);
+                                      }}
                                       className={scss.artista_card}
                                       key={artista.id}
                                     >

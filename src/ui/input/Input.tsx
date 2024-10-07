@@ -28,7 +28,7 @@ const Input = ({ placeholder }: { placeholder: string }) => {
       if (params.type != undefined) {
         navigate(`/search/${value}/${params.type}`);
       } else {
-        navigate(`/search/${value}`);
+        navigate(`/search/${localStorage.getItem('searchTrem')}`);
       }
     } else {
       if (location.pathname.startsWith('/search/')) {
@@ -36,6 +36,10 @@ const Input = ({ placeholder }: { placeholder: string }) => {
       }
     }
   }, [value]);
+  useEffect(() => {
+    navigate(`/search/${localStorage.getItem('searchTrem')}`);
+  }, [value]);
+
   return (
     <div
       className={scss.input_container}
@@ -56,8 +60,11 @@ const Input = ({ placeholder }: { placeholder: string }) => {
         type='text'
         placeholder={placeholder}
         className={scss.input_field}
-        value={value}
-        onChange={e => setValue(e.target.value)}
+        value={localStorage.getItem('searchTrem')!}
+        onChange={e => {
+          setValue(e.target.value);
+          localStorage.setItem('searchTrem', e.target.value ?? '');
+        }}
         ref={inputRef}
       />
       <div className={scss.button_container}>

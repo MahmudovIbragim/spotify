@@ -4,7 +4,7 @@ const api = index.injectEndpoints({
   endpoints: build => ({
     GetArtist: build.query<ARTIST.GetArtistByIdRes, ARTIST.GetArtistByIdRec>({
       query: id => ({
-        url: `https://api.spotify.com/v1/artists/${id.id}`,
+        url: `/artists/${id.id}`,
         method: 'GET',
       }),
     }),
@@ -13,7 +13,7 @@ const api = index.injectEndpoints({
       ARTIST.GetArtistTopTracksRec
     >({
       query: ({ id }) => ({
-        url: `https://api.spotify.com/v1/artists/${id}/top-tracks`,
+        url: `/artists/${id}/top-tracks`,
         method: 'GET',
         params: {
           market: 'KG',
@@ -26,7 +26,7 @@ const api = index.injectEndpoints({
       ARTIST.GetArtistAlbomsRec
     >({
       query: ({ id, offset }) => ({
-        url: `https://api.spotify.com/v1/artists/${id}/albums`,
+        url: `/artists/${id}/albums`,
         method: 'GET',
         params: {
           limit: 9,

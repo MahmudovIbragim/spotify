@@ -7,14 +7,14 @@ const api = index.injectEndpoints({
       PROFILE.GetCurrentProfileRec
     >({
       query: () => ({
-        url: 'https://api.spotify.com/v1/me',
+        url: '/me',
         method: 'GET',
       }),
       providesTags: ['music'],
     }),
     GetUserTopItems: build.query({
       query: ({ type, offset }) => ({
-        url: `https://api.spotify.com/v1/me/top/${type}`,
+        url: `/me/top/${type}`,
         method: 'GET',
         params: {
           time_range: 'medium_term',
@@ -24,7 +24,11 @@ const api = index.injectEndpoints({
       }),
       providesTags: ['music'],
     }),
+  
   }),
 });
 
-export const { useGetCurrentUserProfileQuery, useGetUserTopItemsQuery } = api;
+export const {
+  useGetCurrentUserProfileQuery,
+  useGetUserTopItemsQuery,
+} = api;

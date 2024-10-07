@@ -5,16 +5,16 @@ import ReduxProvider from './providers/ReduxProvider.tsx';
 import React from 'react';
 import { SearchProvider } from './providers/SearchContext.tsx';
 import { ColorProvider } from './providers/BgColorContext.tsx';
-import { BackgroundColorProvider } from './providers/BgProfileColorContext.tsx';
+import { DataProvider } from './providers/SearchDataContext.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ReduxProvider>
       <SearchProvider>
         <ColorProvider>
-          <BackgroundColorProvider>
+          <DataProvider>
             <App />
-          </BackgroundColorProvider>
+          </DataProvider>
         </ColorProvider>
       </SearchProvider>
     </ReduxProvider>

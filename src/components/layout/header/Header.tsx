@@ -7,8 +7,9 @@ import {
 } from '../../../assets/icons';
 import scss from './Header.module.scss';
 import Input from '../../../ui/input/Input';
-import { useEffect, useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { useSearch } from '../../../providers/SearchContext';
+import { useGetCurrentUserProfileQuery } from '../../../redux/api/user';
 interface DataType {
   id: number;
   title: string;
@@ -20,6 +21,7 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const value = useParams();
+  const { data } = useGetCurrentUserProfileQuery();
   const [isDrop, setIsDrop] = useState(false);
   const [token, setToken] = useState(() => localStorage.getItem('token') || '');
   const [activedType] = useState(false);
@@ -139,7 +141,9 @@ const Header = () => {
                   onClick={() => {
                     setIsDrop(!isDrop);
                   }}
-                ></div>
+                >
+                  <img src={data?.images[1].url || ''} alt='image ' />
+                </div>
               </figure>
             </button>
             <div className={isDrop ? scss.drop_out : scss.none}>
@@ -183,7 +187,7 @@ const Header = () => {
                 {dataTypes.map(item => (
                   <>
                     <li
-                      className={item.isActive ? scss.active : ''}
+                      className={`${item.isActive ? scss.active : ''} ${''}  `}
                       onClick={() => {
                         hadnleSearch(item.id, item.type);
                       }}
