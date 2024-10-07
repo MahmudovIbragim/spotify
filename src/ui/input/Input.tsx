@@ -36,6 +36,7 @@ const Input = ({ placeholder }: { placeholder: string }) => {
       }
     }
   }, [value]);
+
   useEffect(() => {
     navigate(`/search/${localStorage.getItem('searchTrem')}`);
   }, [value]);
@@ -48,7 +49,6 @@ const Input = ({ placeholder }: { placeholder: string }) => {
           inputRef.current?.focus();
         } else {
           inputRef.current?.focus();
-
           navigate('/search');
         }
       }}

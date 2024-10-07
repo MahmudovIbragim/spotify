@@ -7,7 +7,7 @@ import {
 } from '../../../assets/icons';
 import scss from './Header.module.scss';
 import Input from '../../../ui/input/Input';
-import {  useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearch } from '../../../providers/SearchContext';
 import { useGetCurrentUserProfileQuery } from '../../../redux/api/user';
 interface DataType {
