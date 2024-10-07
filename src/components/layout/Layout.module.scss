@@ -5,7 +5,9 @@
   min-height: 100vh;
   main {
     background-color: #121212;
-    padding: 20px 0px;
+    margin-top: 64px;
     min-height: 80vh;
+    position: relative;
+    z-index: 1;
   }
 }

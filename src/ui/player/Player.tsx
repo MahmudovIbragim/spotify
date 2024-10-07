@@ -97,6 +97,7 @@ const Player: FC<TypeProps> = ({ url, name, lastName, image }) => {
             controls
             style={{ display: 'none' }}
             ref={audioRef}
+            autoPlay={true}
             onPlay={() => {
               setIsMusic(true);
             }}

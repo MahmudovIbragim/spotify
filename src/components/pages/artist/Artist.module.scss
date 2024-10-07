@@ -1,0 +1,237 @@
+.Artist {
+  .artist_info {
+    display: flex;
+
+    padding: 50px 0px 10px 50px;
+    .artist_profil {
+      img {
+        object-fit: cover;
+        border-radius: 50%;
+        width: 232px;
+        height: 232px;
+      }
+    }
+    .artist_title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      margin-left: 50px;
+      p {
+        font-size: 17px;
+        span {
+          margin-right: 10px;
+        }
+      }
+      h1 {
+        width: 100%;
+        font-size: 6rem;
+        font-weight: 800;
+      }
+    }
+  }
+  .interval_content {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 50px 0px 10px 50px;
+    gap: 0px 5px;
+    .plaing_music {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 56px;
+      width: 100%;
+      margin-right: 20px;
+    }
+    .subscrie_btn {
+      margin-right: 10px;
+    }
+    .dots {
+      cursor: pointer;
+    }
+  }
+  .Content {
+    margin-top: 50px;
+    h2 {
+    }
+    .artist_tracks_container {
+      .container_columns {
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+        max-width: 1324px;
+
+        .artist_tack_column {
+          border: 1px solid transparent;
+          border-radius: 4px;
+          padding: 7px 16px 7px 20px;
+          display: grid;
+          grid-template-columns:
+            [index] var(--tracklist-index-column-width, 16px) [first] minmax(
+              120px,
+              var(--col1, 4fr)
+            )
+            [var1] minmax(120px, var(--col2, 2fr)) [last] minmax(120px, var(--col3, 1fr));
+          &:hover {
+            background-color: #ffffff1a;
+            .track_index {
+              .ind_tr {
+                display: none;
+              }
+              .icon_play {
+                display: block;
+                cursor: pointer;
+                svg {
+                  width: 16px !important;
+                }
+              }
+            }
+            .track_info {
+              .add_track {
+                opacity: 1;
+                cursor: pointer;
+                &:hover {
+                  color: white;
+                  transform: scale(1.05);
+                }
+                &:active {
+                  color: #b3b3b3;
+                  transform: scale(1);
+                }
+              }
+              .mini_dots {
+                opacity: 1;
+                cursor: pointer;
+                &:hover {
+                  color: white;
+                  transform: scale(1.05);
+                }
+                &:active {
+                  color: #b3b3b3;
+                  transform: scale(1);
+                }
+              }
+            }
+          }
+
+          .track_index {
+            align-self: center;
+            justify-self: end;
+            margin-right: 5px;
+            padding-right: 5px;
+            width: 16px;
+
+            padding-right: 10px;
+            .ind_tr {
+              display: flex;
+              font-size: 20px;
+            }
+            .icon_play {
+              display: none;
+            }
+          }
+          .track {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            img {
+              max-width: 40px;
+              border-radius: 4px;
+              object-fit: cover;
+            }
+            .track_title {
+              margin-left: 10px;
+              p {
+                user-select: none;
+                cursor: pointer;
+                font-size: 1rem;
+                font-weight: 400;
+                font-family: sans-serif;
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+          .track_pupular {
+            align-self: center;
+            p {
+              cursor: default;
+              user-select: none;
+            }
+          }
+          .track_info {
+            display: flex;
+            align-self: center;
+            justify-content: space-around;
+            align-items: center;
+            .add_track {
+              justify-self: center;
+              opacity: 0;
+              color: #b3b3b3;
+            }
+            .duration_track {
+              justify-self: center;
+              cursor: default;
+              user-select: none;
+            }
+            .mini_dots {
+              color: #b3b3b3;
+              opacity: 0;
+              svg {
+                width: 30px !important;
+              }
+            }
+          }
+        }
+        .artist_tack_column_hover {
+          background-color: #ffffff4d;
+          &:hover {
+            background-color: #ffffff4d;
+          }
+          .track_index {
+            .ind_tr {
+              display: none;
+            }
+            .icon_play {
+              display: block;
+              svg {
+                width: 16px !important;
+              }
+            }
+          }
+          .track_info {
+            .add_track {
+              opacity: 1;
+            }
+            .mini_dots {
+              opacity: 1;
+            }
+          }
+        }
+      }
+      .more_button {
+        outline: none;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        user-select: none;
+        color: #b3b3b3;
+        font-size: 15px;
+        font-weight: 600;
+        font-family: sans-serif;
+        margin-top: 20px;
+        padding: 10px 20px;
+        transition: 0.2s;
+        &:hover {
+          color: white;
+          transition: 0.2s;
+        }
+      }
+    }
+    .alboms {
+      margin-top: 50px;
+    }
+  }
+}

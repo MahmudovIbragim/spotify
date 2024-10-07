@@ -1,0 +1,119 @@
+.Track {
+  .content_title {
+    background-color: #121212;
+    position: sticky;
+    top: 115px;
+    padding: 20px 50px 5px 40px;
+    width: 100%;
+    display: grid;
+    grid-template-columns:
+      [index] var(--tracklist-index-column-width, 16px) [first] minmax(
+        120px,
+        var(--col1, 4fr)
+      )
+      [var1] minmax(120px, var(--col2, 2fr)) [last] minmax(120px, var(--col3, 1fr));
+    border-bottom: 1px solid rgb(73, 73, 73);
+    .hrsef_ {
+      p {
+      }
+    }
+    .title {
+      margin-left: 20px;
+      p {
+      }
+    }
+    .albom {
+      p {
+        padding-left: 5px;
+      }
+    }
+    .duration {
+      max-width: 20px;
+      span {
+        margin-left: 20px;
+      }
+    }
+  }
+  .Content {
+    margin-top: 70px;
+    min-height: 100vh;
+    .container_tracks {
+      margin-top: 40px;
+      .column_item {
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        &:hover {
+          background-color: #ffffff1a;
+          .item {
+            .index {
+              p {
+                display: none;
+              }
+              span {
+                display: block;
+                width: 15px;
+                height: 15px;
+              }
+            }
+          }
+        }
+        .item {
+          display: grid;
+          grid-template-columns:
+            [index] var(--tracklist-index-column-width, 16px)
+            [first] minmax(120px, var(--col1, 4fr)) [var1] minmax(
+              120px,
+              var(--col2, 2fr)
+            )
+            [last] minmax(120px, var(--col3, 1fr));
+          .index {
+            justify-self: end;
+            align-self: center;
+            padding-left: 20px;
+
+            p {
+              font-size: 20px;
+              font-weight: 600;
+            }
+            span {
+              display: none;
+            }
+          }
+          .music {
+            display: flex;
+            align-items: center;
+            margin-left: 30px;
+            img {
+              border-radius: 5px;
+              width: 40px;
+              height: 40px;
+              margin-right: 12px;
+            }
+            .music_title {
+              p {
+                font-size: 16px;
+                font-weight: 500;
+                margin-bottom: 3px;
+              }
+              a {
+                color: #949494;
+                font-size: 14px;
+              }
+            }
+          }
+          .music_albom {
+            align-self: center;
+            p {
+            }
+          }
+          .music_duration {
+            align-self: center;
+            p {
+            }
+          }
+        }
+      }
+    }
+  }
+}

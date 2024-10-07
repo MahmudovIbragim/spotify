@@ -1,6 +1,9 @@
 .Header {
   padding: 8px 0px;
   background-color: black;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
   .Content {
     display: flex;
     justify-content: space-between;
@@ -38,6 +41,7 @@
       align-items: center;
       max-width: 533px;
       width: 100%;
+      position: relative;
       button {
         color: black;
         border: none;
@@ -93,12 +97,166 @@
         border-radius: 50%;
         background-color: #1f1f1f;
         figure {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
           .border_profile {
+            max-width: 32px;
+            width: 100%;
+            background-color: #747171;
+            height: 32px;
+            border-radius: 50%;
+            margin-bottom: 2px;
             img {
               border-radius: 50%;
               width: 32px;
               height: 32px;
             }
+          }
+        }
+      }
+      .none {
+        max-width: 200px;
+        width: 100%;
+        opacity: 0;
+        background-color: #282828;
+        padding: 10px 5px;
+        border-radius: 5px;
+        position: absolute;
+        top: 0px;
+        right: -100%;
+        transition: 0.3s;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: start;
+          gap: 5px;
+          hr {
+            border: none;
+            border-top: solid 1px #747171;
+            width: 100%;
+          }
+          li {
+            color: white;
+            padding: 10px;
+            width: 100%;
+            p {
+              font-size: 14px;
+              font-weight: 600;
+              cursor: pointer;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+            &:hover {
+              background-color: #404040;
+            }
+          }
+        }
+        button {
+          background-color: transparent;
+          color: white;
+          border: none;
+          outline: none;
+          padding: 0px;
+          cursor: pointer;
+        }
+      }
+      .drop_out {
+        max-width: 200px;
+        width: 100%;
+        opacity: 100;
+        background-color: #282828;
+        padding: 10px 5px;
+        border-radius: 5px;
+        position: absolute;
+        top: 54px;
+        right: 0%;
+        z-index: 1;
+        transition: 0.2s;
+        ul {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: start;
+          gap: 5px;
+          hr {
+            border: none;
+            border-top: solid 1px #747171;
+            width: 100%;
+          }
+          li {
+            color: white;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            p {
+              font-size: 14px;
+              font-weight: 600;
+              cursor: pointer;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+            &:hover {
+              background-color: #404040;
+            }
+          }
+        }
+        button {
+          background-color: transparent;
+          color: white;
+          border: none;
+          outline: none;
+          padding: 0px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .types_search {
+    position: fixed;
+    top: 64px;
+    left: 0px;
+
+    max-width: 1858px;
+    width: 100%;
+    padding: 10px 0px 10px 40px;
+    background-color: #121212;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 915px;
+      gap: 10px;
+
+      li {
+        button {
+          padding: 8px 12px;
+          border: none;
+          outline: none;
+          border-radius: 20px;
+          background-color: #2a2a2a;
+          cursor: pointer;
+          transition: 0.2s;
+
+          &:hover {
+            background-color: #3a3a3a;
+            transition: 0.2s;
+          }
+        }
+      }
+      .active {
+        button {
+          background-color: white;
+          color: black;
+          &:hover {
+            background-color: rgb(241, 241, 241);
+            transition: 0.2s;
           }
         }
       }

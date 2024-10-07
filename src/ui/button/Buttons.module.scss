@@ -1,0 +1,49 @@
+.button_play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  background-color: #1ed760;
+  cursor: pointer;
+  transition: 0.1s;
+  box-shadow: 0 0 15px black;
+  &:hover {
+    background-color: #3be477;
+    transform: scale(1.05);
+    transition: 0.1s;
+  }
+  &:active {
+    background-color: #1abc54;
+    transform: scale(1);
+    transition: 0.1s;
+  }
+}
+
+.subscribe_btn {
+  outline: none;
+  padding: 5px 16px;
+  background-color: transparent;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: sans-serif;
+  border: 0.5px solid #c7c7c7;
+  border-radius: 50px;
+  cursor: pointer;
+  color: white;
+  transition: 0.1s;
+  &:hover {
+    border: 1px solid white;
+    transform: scale(1.04);
+    transition: 0.1s;
+  }
+  &:active {
+    border: 1px solid #c7c7c7;
+    transform: scale(1);
+    transition: 0.1s;
+    color: #c7c7c7;
+  }
+}
