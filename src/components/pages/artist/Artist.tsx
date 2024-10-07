@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import scss from './Artist.module.scss';
 import {
+  useGetArtistAlbomsQuery,
   useGetArtistQuery,
   useGetArtistTopTracksQuery,
 } from '../../../redux/api/artist';
@@ -13,12 +14,17 @@ import {
 import ButtonPlay from '../../../ui/button/ButtonPlay';
 import ButtonSubscrie from '../../../ui/button/ButtonSubscrie';
 import { useState } from 'react';
+import SectionAlboms from '../../../ui/sections/SectionAlboms';
 
 const Artist = () => {
   const params = useParams();
   const { data } = useGetArtistQuery({ id: params.id });
   const { data: TopTracks } = useGetArtistTopTracksQuery({
     id: params.id,
+  });
+  const { data: artistAlboms } = useGetArtistAlbomsQuery({
+    id: params.id,
+    offset: 10,
   });
   const [sliceTrack, setSliceTrack] = useState(5);
   const [trackId, setTrakcId] = useState<null | string>(null);
@@ -31,6 +37,9 @@ const Artist = () => {
 
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
+
+  console.log(artistAlboms);
+
   return (
     <div className={scss.Artist}>
       <div className={scss.artist_info}>
@@ -122,6 +131,11 @@ const Artist = () => {
             >
               {sliceTrack === 5 ? ' Показать больше' : 'Показать меньше'}
             </button>
+          </div>
+          <div className={scss.alboms}>
+            <h2>Дискография</h2>
+            <div className={scss.alboms_type}></div>
+            <SectionAlboms data={artistAlboms} />
           </div>
         </div>
       </div>

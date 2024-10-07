@@ -21,7 +21,27 @@ const api = index.injectEndpoints({
       }),
       providesTags: ['music'],
     }),
+    GetArtistAlboms: build.query<
+      ARTIST.GetArtistAlbomsRes,
+      ARTIST.GetArtistAlbomsRec
+    >({
+      query: ({ id, offset }) => ({
+        url: `https://api.spotify.com/v1/artists/${id}/albums`,
+        method: 'GET',
+        params: {
+          limit: 9,
+          include_groups: ' album,single,appears_on,compilation',
+          market: 'KG',
+          offset: offset,
+        },
+      }),
+      providesTags: ['music'],
+    }),
   }),
 });
 
-export const { useGetArtistQuery, useGetArtistTopTracksQuery } = api;
+export const {
+  useGetArtistQuery,
+  useGetArtistTopTracksQuery,
+  useGetArtistAlbomsQuery,
+} = api;
