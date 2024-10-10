@@ -1,0 +1,54 @@
+.Alboms {
+  .Content {
+    .section_sq {
+      margin-top: 40px;
+      ._container {
+        display: flex;
+        justify-content: space-between;
+        ._card {
+          padding: 15px 15px 20px;
+          border-radius: 10px;
+          cursor: pointer;
+          &:hover {
+            background-color: #1d1d1d;
+            transition: 0.2s;
+          }
+          ._img {
+            margin-bottom: 10px;
+            img {
+              width: 170px;
+              height: 170px;
+              border-radius: 10px;
+              object-fit: cover;
+            }
+          }
+          ._title {
+            p {
+              font-size: 16px;
+              font-weight: 500;
+              max-width: 170px;
+
+              &:last-child {
+                font-size: 12px;
+                color: #b3b3b3;
+                margin-top: 5px;
+
+                span {
+                  &:last-child {
+                    cursor: pointer;
+                    &:hover {
+                      text-decoration: underline;
+                    }
+                  }
+                  &:nth-child(2n) {
+                    margin-inline: 5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

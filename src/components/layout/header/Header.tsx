@@ -35,14 +35,14 @@ const Header = () => {
     { id: 2, title: 'Художники', type: 'artist', isActive: activedType },
     { id: 3, title: 'Песни', type: 'track', isActive: activedType },
     { id: 4, title: 'Плейлисты', type: 'playlist', isActive: activedType },
-    { id: 5, title: 'Аудио книги', type: 'audiobook', isActive: activedType },
+    { id: 5, title: 'Альбомы', type: 'album', isActive: activedType },
+    { id: 7, title: 'Аудио книги', type: 'audiobook', isActive: activedType },
     {
       id: 6,
       title: 'Подкасты и программы',
       type: 'show',
       isActive: activedType,
     },
-    { id: 7, title: 'Альбомы', type: 'album', isActive: activedType },
     { id: 8, title: 'Эпизоды', type: 'episode', isActive: activedType },
   ];
 
