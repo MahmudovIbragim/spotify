@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import { useGetReccomendationsQuery } from '../../../redux/api/getRecomen';
 import scss from './Section.module.scss';

@@ -14,6 +14,10 @@ const Login = () => {
           <a
             href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL}&response_type=${RESPONSE_TYPE}`}
           >
+            {/* <a
+              href={`https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URL}&scope=user-read-recently-played
+`}
+            >sss</a> */}
             Get Token
           </a>
         </div>

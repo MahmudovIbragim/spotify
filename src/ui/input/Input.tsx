@@ -26,23 +26,18 @@ const Input = ({ placeholder }: { placeholder: string }) => {
 
   useEffect(() => {
     if (value.length > 0) {
-      if (params.type != undefined) {
-        navigate(`/search/${value}/${params.type}`);
-        if (params.params != undefined || params.type != undefined) {
+      if (params.type) {
+        if (params.params) {
+          setValue(params.params);
           navigate(`/search/${value}/${params.type}`);
-          setValue(params.params!);
-        } else if (params.params != undefined || params.type === undefined) {
-          navigate(`/search/${params.params}`);
+        } else {
+          navigate(`/search/${value}/${params.type}`);
         }
       } else {
         navigate(`/search/${localStorage.getItem('searchTrem')}`);
       }
-    } else {
-      if (location.pathname.startsWith('/search/')) {
-        navigate('/search');
-      }
     }
-  }, [value, params]);
+  }, [value, params, location.pathname, navigate]);
 
   return (
     <div
