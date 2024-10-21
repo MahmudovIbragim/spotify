@@ -7,7 +7,6 @@ const Genre = () => {
   const params = useParams();
   const color = `#${params.color}`;
   const { contentColor, darkColor } = useColorContext();
-  console.log(contentColor, darkColor);
 
   const category_id: string = params.id!;
   const { data: itemCategory } = useUseGetItemBrowseCategoryQuery({
@@ -26,11 +25,9 @@ const Genre = () => {
       </div>
       <div
         className={scss.bg_style}
-        style={
-          {
-            background: `linear-gradient(180deg, ${color} -5%,  ${darkColor} 40% )`,
-          }
-        }
+        style={{
+          background: `linear-gradient(180deg, ${color} -5%,  ${darkColor} 40% )`,
+        }}
       >
         <div className='container'>
           <div className={scss.Content}>

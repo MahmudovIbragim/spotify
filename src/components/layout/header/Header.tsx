@@ -114,6 +114,7 @@ const Header = () => {
             <button
               className={scss.icon}
               onClick={() => {
+                localStorage.removeItem('searchTrem');
                 navigate('/');
               }}
             >

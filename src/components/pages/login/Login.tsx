@@ -6,6 +6,7 @@ const RESPONSE_TYPE = 'token';
 const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
 
 const Login = () => {
+  
   return (
     <div className={scss.Login}>
       <div className='container'>

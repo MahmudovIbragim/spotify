@@ -7,6 +7,7 @@ import GenrePage from '../components/pages/GenrePage';
 import TypesPage from '../components/pages/TypesPage';
 import ArtistPage from '../components/pages/ArtistPage';
 import ProfilPage from '../components/pages/ProfilPage';
+import AlbomPage from '../components/pages/AlbomPage';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: '/artist/:id',
         element: <ArtistPage />,
+      },
+      {
+        path: '/albom/:color/:id',
+        element: <AlbomPage />,
       },
     ],
   },

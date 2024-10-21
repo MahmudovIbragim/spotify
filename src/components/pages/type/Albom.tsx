@@ -4,7 +4,7 @@ import scss from './Albom.module.scss';
 import { useParams } from 'react-router-dom';
 import { useSearch } from '../../../providers/SearchContext';
 
-const Albom = () => {
+const AlbomType = () => {
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const value = useParams();
@@ -96,4 +96,4 @@ const Albom = () => {
   );
 };
 
-export default Albom;
+export default AlbomType;
