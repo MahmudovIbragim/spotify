@@ -6,6 +6,7 @@ const HomePage = () => {
     <>
       <Home />
       <Recent />
+      
     </>
   );
 };
