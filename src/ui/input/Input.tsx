@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { IconBgReview, IconReview, IconSearch } from '../../assets/icons';
 import scss from './Input.module.scss';
@@ -25,21 +26,18 @@ const Input = ({ placeholder }: { placeholder: string }) => {
 
   useEffect(() => {
     if (value.length > 0) {
-      if (params.type != undefined) {
-        navigate(`/search/${value}/${params.type}`);
+      if (params.type) {
+        if (params.params) {
+          setValue(params.params);
+          navigate(`/search/${value}/${params.type}`);
+        } else {
+          navigate(`/search/${value}/${params.type}`);
+        }
       } else {
         navigate(`/search/${localStorage.getItem('searchTrem')}`);
       }
-    } else {
-      if (location.pathname.startsWith('/search/')) {
-        navigate('/search');
-      }
     }
-  }, [value]);
-
-  useEffect(() => {
-    navigate(`/search/${localStorage.getItem('searchTrem')}`);
-  }, [value]);
+  }, [value, params, location.pathname, navigate]);
 
   return (
     <div

@@ -1,0 +1,52 @@
+.Artists {
+  .Content {
+    h2 {
+      display: flex;
+      margin-block: 30px;
+      max-width: max-content;
+    }
+    .section_artista {
+      .artista_container {
+        display: flex;
+        justify-content: space-between;
+        .artista_card {
+          padding: 20px;
+          cursor: pointer;
+          border-radius: 10px;
+          padding-bottom: 30px;
+          &:hover {
+            background-color: #1d1d1d;
+          }
+          .card_img {
+            max-width: 170px;
+            width: 100%;
+            img {
+              width: 170px;
+              border-radius: 50%;
+              height: 170px;
+              object-fit: cover;
+            }
+          }
+          p {
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 10px;
+            &:hover {
+              text-decoration: underline;
+            }
+            &:last-child {
+              color: rgb(201, 201, 201);
+              font-size: 14px;
+              font-weight: 400;
+              margin: 0px;
+              margin-top: 5px;
+              &:hover {
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

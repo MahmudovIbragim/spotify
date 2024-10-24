@@ -1,0 +1,34 @@
+.Categories {
+  .Content {
+    h2 {
+      margin-top: 30px;
+    }
+    .container_cards {
+      display: flex;
+      justify-content: start;
+      align-items: start;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      gap: 10px 0px;
+      .card_gap {
+        padding: 20px;
+        max-width: 300px;
+        width: 100%;
+        .card {
+          background-position: 1% 1%;
+          background: cover/center no-repeat currentColor;
+          width: 100%;
+          padding: 10px;
+          height: 235px;
+          cursor: pointer;
+          p {
+            font-size: 22px;
+            font-weight: 600;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+              sans-serif;
+          }
+        }
+      }
+    }
+  }
+}

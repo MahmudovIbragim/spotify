@@ -8,7 +8,7 @@ interface SearchContextType {
   isSuccess: boolean;
   isLoading: boolean;
   isFetching: boolean;
-  isError:boolean
+  isError: boolean;
 }
 
 const SearchContext = createContext<SearchContextType | undefined>(undefined);
@@ -23,7 +23,7 @@ export const SearchProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <SearchContext.Provider
-      value={{ search, data, isSuccess, isFetching, isLoading,isError  }}
+      value={{ search, data, isSuccess, isFetching, isLoading, isError }}
     >
       {children}
     </SearchContext.Provider>
