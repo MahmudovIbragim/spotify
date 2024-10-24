@@ -6,7 +6,7 @@ import { useColorContext } from '../../../providers/BgColorContext';
 const Genre = () => {
   const params = useParams();
   const color = `#${params.color}`;
-  const { contentColor, darkColor } = useColorContext();
+  const { darkColor } = useColorContext();
 
   const category_id: string = params.id!;
   const { data: itemCategory } = useUseGetItemBrowseCategoryQuery({

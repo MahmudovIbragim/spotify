@@ -13,7 +13,7 @@ export const ColorProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const params = useParams();
-  const [color, setColor] = useState('');
+  const [color] = useState('');
   console.log(params);
 
   // const color =
