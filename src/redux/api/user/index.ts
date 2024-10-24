@@ -24,11 +24,7 @@ const api = index.injectEndpoints({
       }),
       providesTags: ['music'],
     }),
-  
   }),
 });
 
-export const {
-  useGetCurrentUserProfileQuery,
-  useGetUserTopItemsQuery,
-} = api;
+export const { useGetCurrentUserProfileQuery, useGetUserTopItemsQuery } = api;

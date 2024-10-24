@@ -175,7 +175,7 @@ const Header = () => {
                     setIsDrop(false);
                   }}
                 >
-                  <button>Выйти</button>
+                  <button>Получить токен</button>
                 </li>
               </ul>
             </div>

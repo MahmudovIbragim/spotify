@@ -5,7 +5,7 @@ interface TypeProps {
   searchData: SEARCH.GetSearchRes;
 }
 
-const PlaylistsSection: FC<TypeProps> = ({searchData}) => {
+const PlaylistsSection: FC<TypeProps> = ({ searchData }) => {
   return (
     <section className={scss.Playlist}>
       <div className='container'>

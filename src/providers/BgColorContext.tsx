@@ -13,11 +13,8 @@ export const ColorProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const params = useParams();
-  const [color ,setColor] = useState('')
+  const [color, setColor] = useState('');
   console.log(params);
-
-  
-  
 
   // const color =
   //   params.color && /^([0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})$/.test(params.color)

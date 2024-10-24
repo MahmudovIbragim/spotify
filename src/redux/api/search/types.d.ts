@@ -12,7 +12,7 @@ namespace SEARCH {
   type GetSearchReq = {
     q: string;
     type: string | undefined;
-    offset: number
+    offset: number;
   };
 
   type Tracks = {
@@ -69,7 +69,7 @@ namespace SEARCH {
   };
 
   type Image = {
-    url: string ;
+    url: string;
     height: number;
     width: number;
   };
