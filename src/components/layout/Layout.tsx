@@ -14,6 +14,7 @@ const Layout = () => {
       <Header />
       <main>
         <Outlet />
+        {/* comon broo */}
       </main>
       <Footer />
     </div>
