@@ -4,13 +4,31 @@ import scss from './Albom.module.scss';
 import { useParams } from 'react-router-dom';
 import { useSearch } from '../../../providers/SearchContext';
 
+type AlbomItems = {
+  album_type: string;
+  total_tracks: number;
+  available_markets: string[];
+  external_urls: SEARCH.ExternalUrls6;
+  href: string;
+  id: string;
+  images: SEARCH.Image3[];
+  name: string;
+  release_date: string;
+  release_date_precision: string;
+  restrictions: SEARCH.Restrictions3;
+  type: string;
+  uri: string;
+  artists: SEARCH.Artist3[];
+};
+
 const AlbomType = () => {
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const value = useParams();
   // const navigate = useNavigate();
-  const [data, setAlboms] = useState<SEARCH.Item3[]>([]);
+  const [data, setAlboms] = useState<AlbomItems[] | null>(null);
   const { search, data: dataAlbom, isFetching, isSuccess } = useSearch();
+  console.log(data);
 
   useEffect(() => {
     if (hasMore && value.params) {
@@ -20,7 +38,10 @@ const AlbomType = () => {
 
   useEffect(() => {
     if (isSuccess && dataAlbom?.albums.items) {
-      setAlboms(prev => [...prev, ...dataAlbom.albums.items]);
+      const filteredItems = dataAlbom.albums.items.filter(
+        item => item !== null,
+      );
+      setAlboms(filteredItems);
       if (dataAlbom.albums.items.length < 50) {
         setHasMore(false);
       }
@@ -54,41 +75,44 @@ const AlbomType = () => {
       <div className='container'>
         <div className={scss.Content}>
           <div className={scss.container_alboms}>
-            {data.map(albom => (
-              <>
-                <div className={scss.albom_card} ref={lastElement}>
-                  <div className={scss.card}>
-                    <div className={scss.card_img}>
-                      <img
-                        src={
-                          albom.images[1].url ??
-                          'https://developer.spotify.com/images/guidelines/design/logo-misuse1.svg'
-                        }
-                        alt='image'
-                      />
-                    </div>
-                    <div className={scss.card_title}>
-                      <p>{albom.name}</p>
-                    </div>
-                    <div className={scss.desc}>
-                      <span>{formatDate(albom.release_date)}</span>
-                      <span>•</span>
-                      {albom.artists.map(el => (
-                        <>
-                          <span
-                            className={
-                              albom.artists.length > 1 ? scss.spans : scss.span
-                            }
-                          >
-                            {el.name}
-                          </span>
-                        </>
-                      ))}
+            {data !== null &&
+              data.map(albom => (
+                <>
+                  <div className={scss.albom_card} ref={lastElement}>
+                    <div className={scss.card}>
+                      <div className={scss.card_img}>
+                        <img
+                          src={
+                            albom.images[1].url ??
+                            'https://developer.spotify.com/images/guidelines/design/logo-misuse1.svg'
+                          }
+                          alt='image'
+                        />
+                      </div>
+                      <div className={scss.card_title}>
+                        <p>{albom.name}</p>
+                      </div>
+                      <div className={scss.desc}>
+                        <span>{formatDate(albom.release_date)}</span>
+                        <span>•</span>
+                        {albom.artists.map(el => (
+                          <>
+                            <span
+                              className={
+                                albom.artists.length > 1
+                                  ? scss.spans
+                                  : scss.span
+                              }
+                            >
+                              {el.name}
+                            </span>
+                          </>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </>
-            ))}
+                </>
+              ))}
           </div>
         </div>
       </div>

@@ -7,28 +7,17 @@ const api = index.injectEndpoints({
       SPOTIFY.GetReccomendationRes,
       SPOTIFY.GetReccomendationReq
     >({
-      query: ({ seed_artists, seed_genres, seed_tracks, limit, market }) => ({
-        url: '/recommendations',
+      query: ({ limit, offset }) => ({
+        url: '/browse/new-releases',
         method: 'GET',
         params: {
-          seed_artists,
-          seed_genres,
-          seed_tracks,
           limit,
-          market,
+          offset,
         },
-      }),
-      providesTags: ['music'],
-    }),
-    GetTest: build.query<TEST.GetTestRes, void>({
-      query: () => ({
-        // url: 'me/player/recently-played',
-        url: 'tracks/2lLJzWiYlmewGWvI9Dhmwh',
-        method: 'GET',
       }),
       providesTags: ['music'],
     }),
   }),
 });
 
-export const { useGetReccomendationsQuery, useGetTestQuery } = api;
+export const { useGetReccomendationsQuery } = api;

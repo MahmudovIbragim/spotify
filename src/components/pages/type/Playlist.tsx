@@ -3,7 +3,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSearch } from '../../../providers/SearchContext';
 import scss from './Playlist.module.scss';
 import { useParams } from 'react-router-dom';
-console.log('tst');
 
 const Playlist = () => {
   const [offset, setOffset] = useState(0);
@@ -11,7 +10,6 @@ const Playlist = () => {
   const [newData, setNewData] = useState<SEARCH.Item4[]>([]);
   const { search, data, isSuccess, isFetching } = useSearch();
   const value = useParams();
-  console.log(data?.playlists);
 
   useEffect(() => {
     if (hasMore && value.params) {
@@ -21,7 +19,8 @@ const Playlist = () => {
 
   useEffect(() => {
     if (isSuccess && data?.playlists?.items) {
-      setNewData(prev => [...data.playlists.items, ...prev]);
+      const filteredItems = data.playlists.items.filter(item => item !== null);
+      setNewData(prev => [...filteredItems, ...prev]);
       if (data.playlists.items.length < 50) {
         setHasMore(false);
       }
